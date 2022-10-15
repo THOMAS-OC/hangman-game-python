@@ -19,12 +19,14 @@ tentative = 10 #Nombre de tentatives maintenant la boucle
 correct_letters = [] #Ensemble des lettres trouvés et corrects.
 incorrect_letters = [] #Ensemble des lettres incorrects.
 
-dynamic_word = [] #Liste dynamique des lettres du mot
+dynamic_word = [] # Liste dynamique des lettres du mot
+
+remaining_characters = [] # lettres restantes
 
 while tentative > 0 :
     print("\n -------------------------------------- \n")
     if correct_letters:
-        print(f"Il vous reste {len(random_word) - len(dynamic_word)} caractères à trouver ! \n ")
+        print(f"Il vous reste {len(remaining_characters)} caractères à trouver ! \n ")
     else :
         print(f"Le mot que vous devez deviner comporte {len(random_word)} caractères ! \n ")
 
@@ -41,10 +43,12 @@ while tentative > 0 :
         correct_letters.append(input_user.lower())
 
         dynamic_word = [] # reset et re-constitution du mot dynamique
+        remaining_characters = []
         for letter in random_word :
             if letter in correct_letters :
                 dynamic_word.append(letter)
             else :
+                remaining_characters.append("_")
                 dynamic_word.append("_")
 
         # Gestion de la victoire si le mot dynamique correspond au mot selectionné
