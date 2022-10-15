@@ -25,8 +25,9 @@ remaining_characters = [] # lettres restantes
 
 while tentative > 0 :
     print("\n -------------------------------------- \n")
+    print(f"Listes des caractères utilisés : {correct_letters + incorrect_letters}\n")
     if correct_letters:
-        print(f"Il vous reste {len(remaining_characters)} caractères à trouver ! \n ")
+        print(f"Il vous reste {len(remaining_characters)} caractères à trouver ! en {tentative} tentatives !  \n ")
     else :
         print(f"Le mot que vous devez deviner comporte {len(random_word)} caractères ! \n ")
 
@@ -65,8 +66,14 @@ while tentative > 0 :
         tentative-=1
         # Cas d'échec de la partie
         if tentative == 0 :
-            print("Echec ! le pendu est mort..")
+            print("Echec ! le pendu est mort..\n")
+            print(f"Le mot a trouvé était : {random_word}")
             break
         # Cas tentative décrémenté
         else :
-            print(f"Raté ! Il vous reste {tentative} tentatives !\n")
+
+            if tentative == 1 :
+                print(f"Raté ! Il vous reste {tentative} tentative !\n")
+
+            else :
+                print(f"Raté ! Il vous reste {tentative} tentatives !\n")
